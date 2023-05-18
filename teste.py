@@ -1,20 +1,23 @@
-# _*_ coding: utf-8 _*_
-
 import pyautogui
 import time
-nao = "não"
+
 def SearchClick(image, confianca):
     img = pyautogui.locateCenterOnScreen(image, confidence=confianca)
     pyautogui.moveTo(img.x, img.y, duration=1)
     pyautogui.click()
 
-SearchClick(image=".\images\searchico.png", confianca=0.7)
-pyautogui.move(xOffset=120, yOffset=150, duration=1)
-pyautogui.click()
-pyautogui.move(xOffset=0, yOffset=40, duration=1)
-time.sleep(3)
-if pyautogui.locateOnScreen(image=".\images\emailddsinfo.png", confidence=0.7):
-    print("É a DDS")
-    time.sleep(2)
-else:
-    print("não é a dds")
+img = pyautogui.locateCenterOnScreen(image=".\images/reference.png", confidence=0.9)
+pyautogui.moveTo(img.x, img.y+120, duration=1)
+time.sleep(2)
+pyautogui.click
+time.sleep(1)
+pyautogui.doubleClick(interval=0.1)
+time.sleep(1)
+pyautogui.hotkey('ctrl', 'a')
+time.sleep(1)
+pyautogui.hotkey('ctrl', 'c')
+pyautogui.move(xOffset=+350, yOffset=0, duration=1)
+time.sleep(2)
+pyautogui.click
+time.sleep(1)
+pyautogui.doubleClick(interval=0.1)
