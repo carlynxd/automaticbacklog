@@ -27,6 +27,7 @@ def VerifyEmail(itemID):
         time.sleep(3)
         if pyautogui.locateOnScreen(image=".\images\errorgmail.png"):
             sendemail = False
+            ddspath = False
             time.sleep(1)
             time.sleep(1)
             writeemail.emailbase(itemID=itemID)

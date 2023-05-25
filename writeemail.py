@@ -69,4 +69,4 @@ def sendemail(itemID):
     time.sleep(1)
     pyautogui.hotkey("CTRL", "v")
     time.sleep(1)
-    SearchClick(image=".\images\closerasc.png")
+    SearchClick(image=".\images\closerasc.png", confianca=0.7)

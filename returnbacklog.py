@@ -40,7 +40,7 @@ def ReturnBackLog(user, ddspath, sendemail, itemID):
         time.sleep(1)
         pyautogui.write("7.1 Finalizado", interval=0.1)
         time.sleep(1)
-        searchclick.SearchClick(image="./images/status.png", confianca=0.7)
+        searchclick.SearchClick(image="./images/status.png", confianca=1)
         movearrow.MoveArrow(times=14, side="left")
     if sendemail == True and ddspath == True:
         pyautogui.write(f"{todayright} - {user}: O Email foi enviado para o email de suporte da DDS Verifique o motivo - ass: Lynbot", interval=0.1)
