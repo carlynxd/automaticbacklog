@@ -4,6 +4,8 @@ import time
 import clipboard
 
 def VerifyStatus():
+    global itemID
+    global status
     if pyautogui.locateOnScreen(image=".\images\pausadostatus.png"):
         status = True
         movearrow.MoveArrow(times=18, side="left")

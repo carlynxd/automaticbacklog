@@ -1,7 +1,6 @@
 import pyautogui
 import time
-import returnbacklog
-
+import writeemail
 
 def SearchClick(image, confianca):
     img = pyautogui.locateCenterOnScreen(image, confidence=confianca)
@@ -9,9 +8,8 @@ def SearchClick(image, confianca):
     pyautogui.click()
 
 def VerifyEmail(itemID):
-    # global itemID
-    # global ddspath
-    # global sendemail
+    global ddspath
+    global sendemail
     SearchClick(image=".\images\gmail.png", confianca=0.7)
     time.sleep(3)
     if pyautogui.locateOnScreen(image=".\images\searchico.png", confidence=0.8) or pyautogui.locateOnScreen(image=".\images\searchicowhite.png"):
@@ -29,14 +27,13 @@ def VerifyEmail(itemID):
         time.sleep(3)
         if pyautogui.locateOnScreen(image=".\images\errorgmail.png"):
             sendemail = False
-            import emailbase
-            emailbase.EmailBase()
             time.sleep(1)
-            SearchClick(image=".\images\gmail.png", confianca=0.7)
-            import enviaremail
-            enviaremail.EnviarEmail()
+            time.sleep(1)
+            writeemail.emailbase(itemID=itemID)
+            writeemail.sendemail(itemID=itemID)
+            time.sleep(1)
             print(f"Email não enviado para o item {itemID}")
-            return sendemail
+            return 
         else: 
             sendemail = True
             SearchClick(image=".\images\searchico.png", confianca=0.7)
@@ -46,9 +43,9 @@ def VerifyEmail(itemID):
             time.sleep(5)
             if pyautogui.locateOnScreen(image=".\images\emailddsinfo.png", confidence=0.7):
                 ddspath = True
-                return ddspath, sendemail
+                return 
             else:
                 ddspath = False
-                return ddspath, sendemail
+                return 
     else:
         print("Não foi possível encontrar o icone de lupa")

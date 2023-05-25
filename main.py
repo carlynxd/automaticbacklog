@@ -1,9 +1,6 @@
 # _*_ coding: utf-8 _*_
 
 import time
-import pyautogui
-from datetime import datetime
-import clipboard
 import searchstatus
 import movearrow
 import verifystatus
@@ -11,19 +8,8 @@ import verifyemail
 import searchclick
 import returnbacklog
 
-User = "Carlos"
-
-itemID = ""
+user = "Carlos"
 vezes = 3
-sendemail = True
-status = True
-today = datetime.today()
-todayright = today.strftime(f'%d/%m')
-ddspath = False
-reference = ""
-desc = ""
-solic = ""
-message = ""
 
 for i in range(vezes):
     count = i+1
@@ -36,9 +22,13 @@ for i in range(vezes):
     searchstatus.SearchStatus()
     time.sleep(2)
     verifystatus.VerifyStatus()
+    itemID = verifystatus.itemID
+    status = verifystatus.status
     if status == True:
         print(itemID)
         verifyemail.VerifyEmail(itemID=itemID)
-        returnbacklog.ReturnBackLog()
+        ddspath = verifyemail.ddspath
+        sendemail = verifyemail.sendemail
+        returnbacklog.ReturnBackLog(itemID=itemID,ddspath=ddspath, sendemail=sendemail, user=user)
     else:
         print("Status Invalido, passando para o próximo")

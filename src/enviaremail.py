@@ -1,10 +1,9 @@
 import pyautogui
 import time
-import main
 import searchclick
+import emailbase
 
-def EnviarEmail():
-    global itemID
+def sendemail(itemID):
     if pyautogui.locateOnScreen(image=".\images\errorgmail.png"):
         searchclick.SearchClick(image=".\images\composeemail.png", confianca=0.7)
         time.sleep(1)
@@ -18,3 +17,5 @@ def EnviarEmail():
         time.sleep(1)
         pyautogui.hotkey("CTRL", "v")
         time.sleep(1)
+
+sendemail(itemID=emailbase.itemID)
