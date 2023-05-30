@@ -1,6 +1,6 @@
 import pyautogui
 import time
-import writeemail
+from src import writeemail
 
 def SearchClick(image, confianca):
     img = pyautogui.locateCenterOnScreen(image, confidence=confianca)

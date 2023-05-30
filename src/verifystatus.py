@@ -1,5 +1,5 @@
 import pyautogui
-import movearrow
+from src import movearrow
 import time
 import clipboard
 
@@ -20,8 +20,10 @@ def VerifyStatus():
         time.sleep(1)
         pyautogui.hotkey('ctrl', 'c')
         itemID = clipboard.paste()
-        return itemID, status
+        return
     else:
         status = False
+        itemID = ""
         print('Status diferente')
         movearrow.MoveArrow(times=18, side="left")
+        return

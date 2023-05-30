@@ -3,23 +3,20 @@
 import time
 import sys
 
-import movearrow
-import searchclick
-import searchstatus
-import verifyemail
-import verifystatus
-import returnbacklog
+from src import movearrow, searchclick, searchstatus, verifyemail, verifystatus, returnbacklog
 
 user = "Carlos"
-vezes = 1
+run = True
+controller = 0
+dif = 0
 
-for i in range(vezes):
-    count = i+1
+while run:
+    controller +=1
     print("Iniciando processo de automatização")
     time.sleep(2)
     searchclick.SearchClick(image="./images/id.png", confianca=0.8)
     time.sleep(1)
-    movearrow.MoveArrow(times=count, side="down")
+    movearrow.MoveArrow(times=controller, side="down")
     movearrow.MoveArrow(times=18, side="right")
     searchstatus.SearchStatus()
     time.sleep(2)
@@ -33,4 +30,7 @@ for i in range(vezes):
         sendemail = verifyemail.sendemail
         returnbacklog.ReturnBackLog(itemID=itemID,ddspath=ddspath, sendemail=sendemail, user=user)
     else:
+        dif +=1
         print("Status Invalido, passando para o próximo")
+        if dif > 3:
+            run = False
