@@ -1,0 +1,15 @@
+Olá, {solicitante}
+
+O item {reference}, foi testado e liberado para atualização.
+
+Para você conseguir verificá-lo, basta atualizar o sistema para a versão mais recente.
+
+Segue a descrição do que foi desenvolvido:
+
+{desc}
+
+Caso tenha alguma dúvida, ou queira tratar sobre algum ponto específico do item atualizado, nossa equipe de suporte está à disposição.
+
+Agradecemos a sua atenção, tenha um ótimo dia!
+
+Atenciosamente,
