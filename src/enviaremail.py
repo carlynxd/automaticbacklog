@@ -1,7 +1,6 @@
 import pyautogui
 import time
 import searchclick
-import emailbase
 
 def sendemail(itemID):
     if pyautogui.locateOnScreen(image=".\images\errorgmail.png"):
@@ -17,5 +16,3 @@ def sendemail(itemID):
         time.sleep(1)
         pyautogui.hotkey("CTRL", "v")
         time.sleep(1)
-
-sendemail(itemID=emailbase.itemID)

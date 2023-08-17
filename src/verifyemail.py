@@ -1,17 +1,19 @@
 import pyautogui
 import time
+import re
 from src import writeemail
 
 def SearchClick(image, confianca):
     img = pyautogui.locateCenterOnScreen(image, confidence=confianca)
-    pyautogui.moveTo(img.x, img.y, duration=1)
+    pyautogui.moveTo(img.x, img.y, duration=0)
     pyautogui.click()
 
 def VerifyEmail(itemID):
+    global cliente
     global ddspath
     global sendemail
     SearchClick(image=".\images\gmail.png", confianca=0.7)
-    time.sleep(3)
+    time.sleep(1)
     if pyautogui.locateOnScreen(image=".\images\searchico.png", confidence=0.8) or pyautogui.locateOnScreen(image=".\images\searchicowhite.png"):
         if pyautogui.locateOnScreen(image=".\images\searchico.png", confidence=0.8):
             SearchClick(image=".\images\searchico.png", confianca=0.7)
@@ -31,7 +33,8 @@ def VerifyEmail(itemID):
             time.sleep(1)
             time.sleep(1)
             writeemail.emailbase(itemID=itemID)
-            writeemail.sendemail(itemID=itemID)
+            cliente = writeemail.cliente
+            writeemail.sendemail(itemID=itemID, cliente=cliente)
             time.sleep(1)
             print(f"Email não enviado para o item {itemID}")
             return 
@@ -44,7 +47,16 @@ def VerifyEmail(itemID):
             time.sleep(5)
             if pyautogui.locateOnScreen(image=".\images\emailddsinfo.png", confidence=0.7):
                 ddspath = True
-                return 
+                writeemail.emailbase(itemID=itemID)
+                solic = writeemail.solic
+                if "DDS" in solic and ddspath == True:
+                    ddspath = False
+                    return
+                else:
+                    cliente = writeemail.cliente
+                    writeemail.sendemail(itemID=itemID, cliente=cliente)
+                    return 
+
             else:
                 ddspath = False
                 return 
