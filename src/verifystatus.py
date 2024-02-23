@@ -6,7 +6,7 @@ import clipboard
 def VerifyStatus():
     global itemID
     global status
-    if pyautogui.locateOnScreen(image=".\images\pausadostatus.png"):
+    if pyautogui.locateOnScreen(image=".\images\pausadostatus.png", confidence=0.7):
         status = True
         movearrow.MoveArrow(times=18, side="left")
         img = pyautogui.locateCenterOnScreen(image=".\images\id.png", confidence=0.7)

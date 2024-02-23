@@ -76,6 +76,7 @@ def emailbase(itemID):
     message = clipboard.copy(f'Olá, {solic}\n\nO item \"{itemID} - {reference}\", foi testado e liberado para atualização.\n\nPara você conseguir verificá-lo, basta atualizar o sistema para a versão mais recente.\n\nSegue a descrição do que foi desenvolvido:\n\n{desc}\n\nCaso tenha alguma dúvida, ou queira tratar sobre algum ponto específico do item atualizado, nossa equipe de suporte está à disposição.\n\nAgradecemos a sua atenção, tenha um ótimo dia!\n\nAtenciosamente,')
     SearchClick(image=".\images\gmail.png", confianca=0.7)
     return
+
 def sendemail(itemID, cliente):
     SearchClick(image=".\images\composeemail.png", confianca=0.7)
     time.sleep(1)

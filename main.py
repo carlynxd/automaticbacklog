@@ -2,6 +2,7 @@
 
 import time
 import sys
+import pyautogui
 
 from src import movearrow, searchclick, searchstatus, verifyemail, verifystatus, returnbacklog
 

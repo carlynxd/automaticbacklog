@@ -1,5 +1,4 @@
-import pyautogui
-import time
+import time, pyautogui
 import re
 from src import writeemail
 
@@ -27,7 +26,7 @@ def VerifyEmail(itemID):
         pyautogui.write(f"in:sent \"{itemID}\" ")
         pyautogui.press("ENTER")
         time.sleep(3)
-        if pyautogui.locateOnScreen(image=".\images\errorgmail.png"):
+        if pyautogui.locateCenterOnScreen(image=".\images\errorgmail.png", confidence=0.8):
             sendemail = False
             ddspath = False
             time.sleep(1)
@@ -45,7 +44,7 @@ def VerifyEmail(itemID):
             pyautogui.click()
             pyautogui.move(xOffset=-20, yOffset=40, duration=1)
             time.sleep(5)
-            if pyautogui.locateOnScreen(image=".\images\emailddsinfo.png", confidence=0.7):
+            if pyautogui.locateCenterOnScreen(image=".\images\emailddsinfo.png", confidence=0.7):
                 ddspath = True
                 writeemail.emailbase(itemID=itemID)
                 solic = writeemail.solic

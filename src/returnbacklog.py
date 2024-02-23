@@ -12,8 +12,9 @@ def ReturnBackLog(user, ddspath, sendemail, itemID):
     time.sleep(1)
     searchclick.SearchClick(image="./images/id.png", confianca=0.7)
     time.sleep(1)
-    movearrow.MoveArrow(times=20, side="right")
-    img = pyautogui.locateCenterOnScreen(image=".\images\obsteste.png", confidence=0.7)
+    movearrow.MoveArrow(times=21, side="right")
+    time.sleep(1)
+    img = pyautogui.locateCenterOnScreen(image=".\images\obsteste.png", confidence=0.8)
     pyautogui.moveTo(img.x, img.y+120)
     time.sleep(1)
     pyautogui.doubleClick(duration=0.1)
@@ -44,17 +45,23 @@ def ReturnBackLog(user, ddspath, sendemail, itemID):
         pyautogui.press('enter')
         pyautogui.write(f"{todayright}")
         pyautogui.hotkey('shift', 'tab')
+        time.sleep(1)
+        okerro = pyautogui.locateCenterOnScreen("./images/okerro.png", confidence=0.7)
+        if okerro == True:
+            pyautogui.moveTo(okerro.x, okerro.y, duration=0)
+            time.sleep(1)
+            pyautogui.click()
         movearrow.MoveArrow(times=14, side="left")
         finalizado = True
         return
     if sendemail == True and ddspath == True:
-        pyautogui.write(f"{todayright} - {user}: O Email foi enviado para o email de suporte da DDS Verifique o motivo. Foi criado um rascunho com o ID do item no email de suporte.", interval=0.1)
+        pyautogui.write(f"{todayright} - {user}: Email enviado para o suporte da DDS, rascunho criado {itemID}", interval=0.1)
         searchclick.SearchClick(image=".\images\obsteste.png", confianca=0.7)
         movearrow.MoveArrow(times=20, side="left")
         finalizado = False
         return
     elif sendemail == False:
-        pyautogui.write(f"{todayright} - {user}: O Email nao foi enviado, foi criado um rascunho com assunto {itemID} no email de suporte da DDS, selecione o destinatário para enviar ", interval=0.1)
+        pyautogui.write(f"{todayright} - {user}: O Email nao foi enviado, foi criado um rascunho com assunto {itemID} no email de suporte", interval=0.1)
         searchclick.SearchClick(image=".\images\obsteste.png", confianca=0.7)
         movearrow.MoveArrow(times=20, side="left")
         finalizado = False
